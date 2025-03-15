@@ -94,3 +94,26 @@
 }
 
 
+.language-selector {
+    display: flex;
+    gap: 5px; 
+    margin-left: 0; 
+    align-items: center;
+}
+
+
+.language-selector button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    color: white;
+}
+
+.language-selector .active-lang {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+  

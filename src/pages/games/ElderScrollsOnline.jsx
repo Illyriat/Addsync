@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import translationManager from "../../helper/translationsManager";
+import FolderSelector from "../../components/folderSelector/FolderSelector";
 
 const ElderScrollsOnline = () => {
   const [_, setRerender] = useState(0);
@@ -14,6 +15,7 @@ const ElderScrollsOnline = () => {
     <div>
       <h1 className="text-3xl font-bold">{translationManager.getGameTranslation("eso", "title")}</h1>
       <p className="mt-4">{translationManager.getGameTranslation("eso", "description")}</p>
+      <FolderSelector gameKey="eso" />
     </div>
   );
 };

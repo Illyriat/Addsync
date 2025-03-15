@@ -1,20 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
-import "./NavBar.css"; // Import the CSS
+import translationManager from "../../helper/translationsManager";
+import "./NavBar.css";
 
 const NavBar = ({ darkMode, setDarkMode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  let hoverTimeout; // Timeout reference
+  const [currentLang, setCurrentLang] = useState(translationManager.currentLanguage);
+  let hoverTimeout = null;
+
+  useEffect(() => {
+    const updateLanguage = () => setCurrentLang(translationManager.currentLanguage);
+    window.addEventListener("languageChanged", updateLanguage);
+    
+    return () => window.removeEventListener("languageChanged", updateLanguage);
+  }, []);
 
   const handleMouseEnter = () => {
-    clearTimeout(hoverTimeout); // Prevent closing on quick hover
+    clearTimeout(hoverTimeout); // ✅ Clear existing timeout
     setMenuOpen(true);
   };
 
   const handleMouseLeave = () => {
     hoverTimeout = setTimeout(() => {
       setMenuOpen(false);
-    }, 200); // Short delay to prevent instant collapse
+    }, 200);
+  };
+
+  const changeLanguage = (lang) => {
+    translationManager.setLanguage(lang);
   };
 
   return (
@@ -24,24 +37,46 @@ const NavBar = ({ darkMode, setDarkMode }) => {
       </Link>
 
       <div className="nav-controls">
+
+      <div className="language-selector">
+          {["en", "de", "fr", "ru"].map((lang) => (
+            <button
+              key={lang}
+              onClick={() => changeLanguage(lang)}
+              className={currentLang === lang ? "active-lang" : ""}
+            >
+              {lang.toUpperCase()}
+            </button>
+          ))}
+        </div>
+
         <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+          {darkMode ? translationManager.getTranslation("lightMode") : translationManager.getTranslation("darkMode")}
         </button>
 
-        {/* Wrap button + dropdown in a single hover container */}
         <div 
-          className="hamburger-container" 
-          onMouseEnter={handleMouseEnter} 
+          className="hamburger-container"
+          onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
           <button className="hamburger">☰</button>
           {menuOpen && (
             <div className="dropdown-menu">
-              <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
-              <NavLink to="/eso" onClick={() => setMenuOpen(false)}>The Elder Scrolls Online</NavLink>
-              <NavLink to="/wow" onClick={() => setMenuOpen(false)}>World of Warcraft</NavLink>
-              <NavLink to="/ffxiv" onClick={() => setMenuOpen(false)}>Final Fantasy XIV</NavLink>
-              <NavLink to="/gw2" onClick={() => setMenuOpen(false)}>Guild Wars 2</NavLink>
+              <NavLink to="/" onClick={() => setMenuOpen(false)}>
+                {translationManager.getTranslation("home")}
+              </NavLink>
+              <NavLink to="/eso" onClick={() => setMenuOpen(false)}>
+                {translationManager.getTranslation("eso")}
+              </NavLink>
+              <NavLink to="/wow" onClick={() => setMenuOpen(false)}>
+                {translationManager.getTranslation("wow")}
+              </NavLink>
+              <NavLink to="/ffxiv" onClick={() => setMenuOpen(false)}>
+                {translationManager.getTranslation("ffxiv")}
+              </NavLink>
+              <NavLink to="/gw2" onClick={() => setMenuOpen(false)}>
+                {translationManager.getTranslation("gw2")}
+              </NavLink>
             </div>
           )}
         </div>

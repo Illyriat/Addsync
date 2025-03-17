@@ -16,7 +16,7 @@ const NavBar = ({ darkMode, setDarkMode }) => {
   }, []);
 
   const handleMouseEnter = () => {
-    clearTimeout(hoverTimeout); // ✅ Clear existing timeout
+    clearTimeout(hoverTimeout);
     setMenuOpen(true);
   };
 

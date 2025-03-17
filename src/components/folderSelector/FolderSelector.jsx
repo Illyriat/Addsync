@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { open } from "@tauri-apps/plugin-dialog";
 import { readDir, remove, BaseDirectory } from "@tauri-apps/plugin-fs";
-import { join } from "@tauri-apps/api/path"; // Correct import for the join function
+import { join } from "@tauri-apps/api/path";
 
 function FolderSelector() {
   const [folderPath, setFolderPath] = useState("");
@@ -30,10 +30,10 @@ function FolderSelector() {
 
   const deleteEntry = async (entry) => {
     try {
-      const fullPath = await join(folderPath, entry.name); // Use join from plugin-fs
+      const fullPath = await join(folderPath, entry.name);
       console.log(`🔥 Deleting: ${fullPath}`);
   
-      await remove(fullPath, { recursive: true }); // Recursively delete folder
+      await remove(fullPath, { recursive: true });
   
       loadEntries(folderPath);
     } catch (error) {

@@ -6,8 +6,8 @@ use tauri_plugin_fs::init as fs_init;
 
 fn main() {
     Builder::default()
-        .plugin(fs_init()) // Initialize FS Plugin with default permissions
-        .plugin(dialog_init()) // Ensure Dialog Plugin is initialized
+        .plugin(fs_init())
+        .plugin(dialog_init())
         .run(tauri::generate_context!())
         .expect("Error while running Tauri application");
 }

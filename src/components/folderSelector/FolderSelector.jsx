@@ -51,8 +51,8 @@ function FolderSelector() {
 
       <ul className="mt-2">
         {entries.length > 0 ? (
-          entries.map((entry) => (
-            <li key={entry.path} className="flex justify-between border-b py-1">
+          entries.map((entry, index) => (
+            <li key={entry.path || `entry-${index}`} className="flex justify-between border-b py-1">
               <span>{entry.name}</span>
               <button
                 onClick={() => deleteEntry(entry)}
@@ -66,6 +66,7 @@ function FolderSelector() {
           <p className="text-gray-500 mt-2">No files or folders found.</p>
         )}
       </ul>
+
     </div>
   );
 }

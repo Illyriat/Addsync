@@ -65,27 +65,27 @@
     cursor: pointer;
 }
 
-/* Dropdown Menu - Wider and More Spacious */
+/* Dropdown Menu  */
 .dropdown-menu {
     position: absolute;
     top: 40px;
     right: 0;
     background: #444;
-    padding: 15px; /* Keeps good spacing */
+    padding: 15px;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    min-width: 220px; /* Increased width */
+    min-width: 220px;
 }
 
-/* Dropdown Menu Links - More padding for better clickability */
+/* Dropdown Menu Links */
 .dropdown-menu a {
     text-decoration: none;
     color: white;
-    padding: 14px 24px; /* Increased padding for larger clickable area */
+    padding: 14px 24px;
     display: block;
-    font-size: 18px; /* Slightly larger text */
+    font-size: 18px;
 }
 
 /* Hover Effect */
@@ -115,5 +115,3 @@
     font-weight: bold;
     text-decoration: underline;
 }
-
-  

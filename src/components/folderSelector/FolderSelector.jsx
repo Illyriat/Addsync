@@ -32,7 +32,7 @@ function FolderSelector({ gameKey, darkMode, setHasFolder }) {
         if (savedPath) {
           console.log(`✅ Found stored path for ${gameKey}:`, savedPath);
           setFolderPath(savedPath);
-          setHasFolder(true); // ✅ Update game page state
+          setHasFolder(true);
           loadEntries(savedPath);
         } else {
           console.log(`ℹ️ No stored path found for ${gameKey}.`);
@@ -49,7 +49,7 @@ function FolderSelector({ gameKey, darkMode, setHasFolder }) {
     try {
       const items = await readDir(selectedPath, { recursive: false });
       setEntries(items);
-      setHasFolder(items.length > 0); // ✅ Update game page state
+      setHasFolder(items.length > 0);
     } catch (error) {
       console.error(`🔥 Error reading folder contents for ${gameKey}:`, error);
     }
@@ -61,7 +61,7 @@ function FolderSelector({ gameKey, darkMode, setHasFolder }) {
       if (selected) {
         console.log(`📁 Selected Folder for ${gameKey}:`, selected);
         setFolderPath(selected);
-        setHasFolder(true); // ✅ Update game page state
+        setHasFolder(true);
         loadEntries(selected);
 
         if (store) {

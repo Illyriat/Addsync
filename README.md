@@ -6,7 +6,7 @@ Desktop App for MMO Addon Management.
 
 
 ### Current Supported Languages
-    - :gb: :de: :fr: :ru: :es: :it:
+    * 🇬🇧 🇩🇪 🇩🇪 🇷🇺 🇪🇸 🇮🇹
 
 
 ## Setup Prerequisites

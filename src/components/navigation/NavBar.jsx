@@ -3,8 +3,19 @@ import { NavLink, Link } from "react-router-dom";
 import translationManager from "../../helper/translationsManager";
 import "./NavBar.css";
 
+/* Language Flags & Labels */
+const languageOptions = {
+  en: { flag: "/flags/en.png", label: "English" },
+  de: { flag: "/flags/de.png", label: "Deutsch" },
+  fr: { flag: "/flags/fr.png", label: "Français" },
+  ru: { flag: "/flags/ru.png", label: "Русский" },
+  es: { flag: "/flags/es.png", label: "Español" },
+  it: { flag: "/flags/it.png", label: "Italiano" },
+};
+
 const NavBar = ({ darkMode, setDarkMode }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [langDropdownOpen, setLangDropdownOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState(translationManager.currentLanguage);
   let hoverTimeout = null;
 
@@ -15,19 +26,14 @@ const NavBar = ({ darkMode, setDarkMode }) => {
     return () => window.removeEventListener("languageChanged", updateLanguage);
   }, []);
 
-  const handleMouseEnter = () => {
-    clearTimeout(hoverTimeout);
-    setMenuOpen(true);
-  };
-
-  const handleMouseLeave = () => {
-    hoverTimeout = setTimeout(() => {
-      setMenuOpen(false);
-    }, 200);
+  const toggleLangDropdown = () => {
+    setLangDropdownOpen(!langDropdownOpen);
   };
 
   const changeLanguage = (lang) => {
     translationManager.setLanguage(lang);
+    setCurrentLang(lang);
+    setLangDropdownOpen(false);
   };
 
   return (
@@ -37,17 +43,29 @@ const NavBar = ({ darkMode, setDarkMode }) => {
       </Link>
 
       <div className="nav-controls">
-
-      <div className="language-selector">
-          {["en", "de", "fr", "ru"].map((lang) => (
-            <button
-              key={lang}
-              onClick={() => changeLanguage(lang)}
-              className={currentLang === lang ? "active-lang" : ""}
-            >
-              {lang.toUpperCase()}
-            </button>
-          ))}
+        {/* Language Dropdown */}
+        <div className="language-dropdown">
+          <button className="language-button" onClick={toggleLangDropdown}>
+            <img 
+              src={languageOptions[currentLang].flag} 
+              alt={languageOptions[currentLang].label} 
+              className="language-flag" 
+            />
+          </button>
+          {langDropdownOpen && (
+            <div className="language-menu">
+              {Object.keys(languageOptions).map((lang) => (
+                <button key={lang} onClick={() => changeLanguage(lang)} className={currentLang === lang ? "active-lang" : ""}>
+                  <img 
+                    src={languageOptions[lang].flag} 
+                    alt={languageOptions[lang].label} 
+                    className="dropdown-flag" 
+                  />
+                  <span className="language-name">{languageOptions[lang].label}</span>
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
@@ -56,8 +74,15 @@ const NavBar = ({ darkMode, setDarkMode }) => {
 
         <div 
           className="hamburger-container"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={() => {
+            clearTimeout(hoverTimeout);
+            setMenuOpen(true);
+          }}
+          onMouseLeave={() => {
+            hoverTimeout = setTimeout(() => {
+              setMenuOpen(false);
+            }, 200);
+          }}
         >
           <button className="hamburger">☰</button>
           {menuOpen && (

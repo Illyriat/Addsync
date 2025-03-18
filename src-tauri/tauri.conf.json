@@ -35,6 +35,8 @@
   "plugins": {
     "fs": {
       "requireLiteralLeadingDot": false
+    },
+    "store" : null
     }
-  }
 }
+

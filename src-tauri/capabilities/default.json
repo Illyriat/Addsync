@@ -2,34 +2,57 @@
   "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "main-capability",
   "description": "Capability for the main window",
-  "windows": ["main"],
+  "windows": [
+    "main"
+  ],
   "permissions": [
     {
       "identifier": "dialog:allow-open",
-      "allow": [{}]
+      "allow": [
+        {}
+      ]
     },
     {
       "identifier": "fs:scope",
       "allow": [
-        { "path": "$HOME/**" },
-        { "path": "$APPDATA/**" }
+        {
+          "path": "$HOME/**"
+        },
+        {
+          "path": "$APPDATA/**"
+        }
       ]
     },
     {
       "identifier": "fs:allow-read-dir",
-      "allow": [{ "path": "$HOME/**" }]
+      "allow": [
+        {
+          "path": "$HOME/**"
+        }
+      ]
     },
     {
       "identifier": "fs:allow-remove",
-      "allow": [{ "path": "$HOME/**" }]
+      "allow": [
+        {
+          "path": "$HOME/**"
+        }
+      ]
     },
     {
       "identifier": "fs:allow-write-text-file",
-      "allow": [{ "path": "$APPDATA/**" }]
+      "allow": [
+        {
+          "path": "$APPDATA/**"
+        }
+      ]
     },
     {
       "identifier": "core:path:allow-join",
-      "allow": [{}]
-    }
+      "allow": [
+        {}
+      ]
+    },
+    "store:default"
   ]
 }

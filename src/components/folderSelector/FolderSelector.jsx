@@ -1,11 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { open } from "@tauri-apps/plugin-dialog";
-import { readDir, remove, BaseDirectory } from "@tauri-apps/plugin-fs";
+import { readDir, remove } from "@tauri-apps/plugin-fs";
 import { join } from "@tauri-apps/api/path";
+import { load } from "@tauri-apps/plugin-store";
+
+const STORE_FILE = "store.json";
+const STORE_KEY = "selectedFolderPath";
 
 function FolderSelector() {
   const [folderPath, setFolderPath] = useState("");
   const [entries, setEntries] = useState([]);
+  const [store, setStore] = useState(null);
+
+  useEffect(() => {
+    const initStore = async () => {
+      console.log("🔍 Checking if running inside Tauri...");
+      console.log("🔍 `window.__TAURI__`:", window.__TAURI__);
+
+      if (!window.__TAURI__) {
+        console.warn("🔥 Store plugin is not available (not running in Tauri).");
+        return;
+      }
+
+      try {
+        console.log("🔄 Loading store...");
+        const storeInstance = await load(STORE_FILE, { autoSave: true });
+        setStore(storeInstance);
+        console.log("✅ Store Plugin Loaded");
+
+        const savedPath = await storeInstance.get(STORE_KEY);
+        if (savedPath) {
+          console.log("✅ Found stored path:", savedPath);
+          setFolderPath(savedPath);
+          loadEntries(savedPath);
+        } else {
+          console.log("ℹ️ No stored path found.");
+        }
+      } catch (error) {
+        console.error("🔥 Error loading store:", error);
+      }
+    };
+
+    initStore();
+  }, []);
 
   const loadEntries = async (selectedPath) => {
     try {
@@ -20,8 +57,17 @@ function FolderSelector() {
     try {
       const selected = await open({ directory: true, multiple: false });
       if (selected) {
+        console.log("📁 Selected Folder:", selected);
         setFolderPath(selected);
         loadEntries(selected);
+
+        if (store) {
+          console.log("💾 Storing path:", selected);
+          await store.set(STORE_KEY, selected);
+          await store.save();
+        } else {
+          console.warn("⚠️ Store is not initialized yet!");
+        }
       }
     } catch (error) {
       console.error("🔥 Error selecting folder:", error);
@@ -32,15 +78,15 @@ function FolderSelector() {
     try {
       const fullPath = await join(folderPath, entry.name);
       console.log(`🔥 Deleting: ${fullPath}`);
-  
+
       await remove(fullPath, { recursive: true });
-  
+
+      // Reload entries after deletion
       loadEntries(folderPath);
     } catch (error) {
       console.error(`🔥 Error deleting ${entry.name}:`, error);
     }
   };
-  
 
   return (
     <div className="p-4 border rounded-lg">
@@ -66,7 +112,6 @@ function FolderSelector() {
           <p className="text-gray-500 mt-2">No files or folders found.</p>
         )}
       </ul>
-
     </div>
   );
 }

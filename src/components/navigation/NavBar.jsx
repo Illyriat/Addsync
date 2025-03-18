@@ -1,17 +1,8 @@
 import { useState, useEffect } from "react";
 import { NavLink, Link } from "react-router-dom";
 import translationManager from "../../helper/translationsManager";
+import languageOptions from "../../helper/translations/languageOptions";
 import "./NavBar.css";
-
-/* Language Flags & Labels */
-const languageOptions = {
-  en: { flag: "/flags/en.png", label: "English" },
-  de: { flag: "/flags/de.png", label: "Deutsch" },
-  fr: { flag: "/flags/fr.png", label: "Français" },
-  ru: { flag: "/flags/ru.png", label: "Русский" },
-  es: { flag: "/flags/es.png", label: "Español" },
-  it: { flag: "/flags/it.png", label: "Italiano" },
-};
 
 const NavBar = ({ darkMode, setDarkMode }) => {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -115,3 +115,78 @@
     font-weight: bold;
     text-decoration: underline;
 }
+
+
+
+/* Language Dropdown */
+.language-dropdown {
+    position: relative;
+}
+
+.language-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.language-flag {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+}
+
+/* Language Menu */
+.language-menu {
+    position: absolute;
+    top: 45px;
+    left: 0;
+    background: #444;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    padding: 5px 0;
+}
+
+.language-menu button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 8px 15px;
+    width: 100%;
+    text-align: left;
+    color: white;
+    font-size: 1rem;
+}
+
+.language-menu button:hover {
+    background: #555;
+}
+
+/* Flag inside Dropdown */
+.dropdown-flag {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+/* Language Name */
+.language-name {
+    font-size: 1rem;
+}
+
+/* Highlight Selected Language */
+.active-lang {
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.2);
+}

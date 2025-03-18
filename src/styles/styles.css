@@ -1,71 +1,166 @@
 /* Global Reset */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Light Mode */
-  .light-mode {
-    background-color: #ffffff;
-    color: #222222;
-  }
-  
-  /* Dark Mode */
-  .dark-mode {
-    background-color: #222222;
-    color: #ffffff;
-  }
-  
-  /* Navigation Bar */
-  .navbar {
-    width: 100%;
-    background-color: #333;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar h1 {
-    font-size: 24px;
-    color: white;
-  }
-  
-  .navbar .nav-links {
-    display: flex;
-    gap: 20px;
-  }
-  
-  .navbar .nav-links a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    transition: color 0.3s;
-  }
-  
-  .navbar .nav-links a:hover {
-    color: yellow;
-  }
-  
-  /* Theme Toggle Button */
-  .theme-toggle {
-    background-color: #444;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 0.3s;
-  }
-  
-  .theme-toggle:hover {
-    background-color: #666;
-  }
-  
-  /* Content Container */
-  .content-container {
-    padding: 20px;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+/* Apply Background to Entire Page */
+body {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode (Default) */
+.light-mode {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+.light-mode .app-container {
+  background-color: #ffffff;
+  color: #222;
+}
+
+/* Dark Mode */
+/* Dark Mode */
+.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff;
+}
+
+/* Fix Content Background */
+.dark-mode .app-container,
+.dark-mode .content-container {
+    background-color: #121212 !important;
+    color: #e5e5e5;
+}
+
+/* Fix Content Area */
+.content-container {
+  padding: 20px;
+  min-height: 100vh;
+}
+
+/* Ensure Inner Components are Themed */
+.dark-mode .game-card, 
+.dark-mode .folder-container {
+  background-color: #1e1e1e !important;
+  color: #e5e5e5;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+/* Ensure Background Colors Apply Properly */
+.dark-mode body, 
+.dark-mode .app-container, 
+.dark-mode .content-container {
+  background-color: #121212;
+  color: #e5e5e5;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  background-color: #333;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dark-mode .navbar {
+  background-color: #1a1a1a;
+}
+
+/* Navbar Text */
+.navbar h1 {
+  font-size: 24px;
+  color: white;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .nav-links a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.navbar .nav-links a:hover {
+  color: yellow;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  background-color: #444;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #666;
+}
+
+.dark-mode .theme-toggle {
+  background-color: #777;
+  color: black;
+}
+
+.dark-mode .theme-toggle:hover {
+  background-color: #999;
+}
+
+/* Content Container */
+.content-container {
+  padding: 20px;
+}
+
+/* Dark Mode Support for Other Components */
+.dark-mode .game-card, 
+.dark-mode .folder-container {
+  background-color: #1e1e1e;
+  color: #e5e5e5;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .game-title {
+  color: #93c5fd;
+}
+
+.dark-mode .game-description {
+  color: #d1d5db;
+}
+
+.dark-mode .folder-title {
+  color: #e5e7eb;
+}
+
+.dark-mode .folder-button {
+  background-color: #2563eb;
+}
+
+.dark-mode .folder-button:hover {
+  background-color: #1e40af;
+}
+
+.dark-mode .folder-item {
+  background: #333;
+  color: white;
+}
+
+.dark-mode .folder-delete {
+  background-color: #e11d48;
+}
+
+.dark-mode .folder-delete:hover {
+  background-color: #be123c;
+}

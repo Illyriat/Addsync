@@ -60,8 +60,9 @@ const NavBar = ({ darkMode, setDarkMode }) => {
         </div>
 
         <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
-          {darkMode ? translationManager.getTranslation("lightMode") : translationManager.getTranslation("darkMode")}
+          {darkMode ? translationManager.getTranslation("darkMode") : translationManager.getTranslation("lightMode")}
         </button>
+
 
         <div 
           className="hamburger-container"

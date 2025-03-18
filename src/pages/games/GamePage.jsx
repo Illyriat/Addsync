@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import translationManager from "../../helper/translationsManager";
 import FolderSelector from "../../components/folderSelector/FolderSelector";
+import "./GamePage.css";
 
-const GamePage = ({ gameKey }) => {
+const GamePage = ({ gameKey, darkMode }) => {
   const [_, setRerender] = useState(0);
+  const [hasFolder, setHasFolder] = useState(false); // Track folder selection
 
   useEffect(() => {
     const updateLanguage = () => setRerender(prev => prev + 1);
@@ -12,10 +14,18 @@ const GamePage = ({ gameKey }) => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold">{translationManager.getGameTranslation(gameKey, "title")}</h1>
-      <p className="mt-4">{translationManager.getGameTranslation(gameKey, "description")}</p>
-      <FolderSelector gameKey={gameKey} />
+    <div className={`game-container ${hasFolder ? "has-folder" : ""}`}>
+      <div className="game-card">
+        <h1 className="game-title">
+          {translationManager.getGameTranslation(gameKey, "title")}
+        </h1>
+        <p className="game-description">
+          {translationManager.getGameTranslation(gameKey, "description")}
+        </p>
+        <div className="game-folder-container">
+          <FolderSelector gameKey={gameKey} setHasFolder={setHasFolder} />
+        </div>
+      </div>
     </div>
   );
 };

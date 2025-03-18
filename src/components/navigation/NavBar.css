@@ -9,33 +9,37 @@
     position: relative;
 }
 
-/* Logo (H1 inside a Link) */
+/* Dark Mode */
+.dark-mode .navbar {
+    background-color: #1a1a1a !important;
+}
+
+/* Logo */
 .logo h1 {
     font-size: 24px;
     color: white;
     text-decoration: none;
 }
 
-/* Remove underline from all links */
+/* Navbar Links */
 .navbar a, 
 .navbar a:visited {
     text-decoration: none;
     color: white;
 }
 
-/* Ensure hover effect still works */
 .navbar a:hover {
     color: yellow;
 }
 
-/* Controls (Theme Button + Hamburger) */
+/* Controls (Theme + Language + Hamburger) */
 .nav-controls {
     display: flex;
     align-items: center;
     gap: 15px;
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle */
 .theme-toggle {
     background-color: #444;
     color: white;
@@ -50,13 +54,22 @@
     background-color: #666;
 }
 
-/* Hamburger Button Container */
+/* Dark Mode Fix */
+.dark-mode .theme-toggle {
+    background-color: #777;
+    color: black;
+}
+
+.dark-mode .theme-toggle:hover {
+    background-color: #999;
+}
+
+/* Hamburger */
 .hamburger-container {
     position: relative;
     display: inline-block;
 }
 
-/* Hamburger Button */
 .hamburger {
     font-size: 24px;
     background: none;
@@ -65,7 +78,7 @@
     cursor: pointer;
 }
 
-/* Dropdown Menu  */
+/* Dropdown */
 .dropdown-menu {
     position: absolute;
     top: 40px;
@@ -79,7 +92,6 @@
     min-width: 220px;
 }
 
-/* Dropdown Menu Links */
 .dropdown-menu a {
     text-decoration: none;
     color: white;
@@ -88,41 +100,19 @@
     font-size: 18px;
 }
 
-/* Hover Effect */
 .dropdown-menu a:hover {
     background: #555;
 }
 
-
+/* Language Selector */
 .language-selector {
     display: flex;
-    gap: 5px; 
-    margin-left: 0; 
     align-items: center;
-}
-
-
-.language-selector button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 0.8rem;
-    padding: 3px 8px;
-    color: white;
-}
-
-.language-selector .active-lang {
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-
-
-/* Language Dropdown */
-.language-dropdown {
+    justify-content: center; /* Ensure it aligns properly */
     position: relative;
 }
 
+/* Button for Language Dropdown */
 .language-button {
     background: none;
     border: none;
@@ -132,6 +122,7 @@
     align-items: center;
 }
 
+/* Flag inside button */
 .language-flag {
     width: 36px;
     height: 36px;
@@ -140,10 +131,15 @@
     object-fit: cover;
 }
 
+/* Language Dropdown */
+.language-dropdown {
+    position: relative;
+}
+
 /* Language Menu */
 .language-menu {
     position: absolute;
-    top: 45px;
+    top: 50px;
     left: 0;
     background: #444;
     border-radius: 5px;
@@ -152,8 +148,10 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
     min-width: 150px;
     padding: 5px 0;
+    z-index: 1000;
 }
 
+/* Language Menu Button */
 .language-menu button {
     background: none;
     border: none;
@@ -171,7 +169,7 @@
     background: #555;
 }
 
-/* Flag inside Dropdown */
+/* Language Dropdown Flag */
 .dropdown-flag {
     width: 30px;
     height: 30px;

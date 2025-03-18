@@ -1,0 +1,41 @@
+/* Default Game Container */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align to top by default */
+    min-height: 100vh;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* If folder is selected, center it */
+.game-container.has-folder {
+    justify-content: center;
+}
+
+/* Game Card */
+.game-card {
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+.dark-mode .game-card {
+    background-color: #1e1e1e;
+    color: #e5e5e5;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+
+
+/* Dark Mode Fix */
+.dark-mode .game-container {
+    background-color: #121212 !important;
+}
+

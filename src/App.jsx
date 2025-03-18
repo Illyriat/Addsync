@@ -12,17 +12,21 @@ import GuildWars2 from "./pages/games/GuildWars2";
 import "./styles/styles.css";
 
 const App = () => {
+  // **Reverse the logic:**
   const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem("darkMode") === "true";
+    const storedTheme = localStorage.getItem("darkMode");
+    return storedTheme === null ? false : storedTheme === "false"; // **Fix: Reverse condition**
   });
 
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark-mode");
+      document.documentElement.classList.remove("light-mode");
     } else {
+      document.documentElement.classList.add("light-mode");
       document.documentElement.classList.remove("dark-mode");
     }
-    localStorage.setItem("darkMode", darkMode);
+    localStorage.setItem("darkMode", darkMode ? "true" : "false"); // **Fix: Save correctly**
   }, [darkMode]);
 
   return (
@@ -35,7 +39,7 @@ const App = () => {
             <Route path="/eso" element={<ElderScrollsOnline />} />
             <Route path="/wow" element={<WorldOfWarcraft />} />
             <Route path="/ffxiv" element={<FinalFantasyXIV />} />
-            <Route path="/gw2" element={<GuildWars2/>} /> 
+            <Route path="/gw2" element={<GuildWars2 />} />
           </Routes>
         </div>
       </Router>

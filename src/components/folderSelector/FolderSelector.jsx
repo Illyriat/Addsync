@@ -3,10 +3,11 @@ import { open } from "@tauri-apps/plugin-dialog";
 import { readDir, remove } from "@tauri-apps/plugin-fs";
 import { join } from "@tauri-apps/api/path";
 import { load } from "@tauri-apps/plugin-store";
+import "./FolderSelector.css";
 
 const STORE_FILE = "store.json";
 
-function FolderSelector({ gameKey }) {
+function FolderSelector({ gameKey, darkMode, setHasFolder }) {
   const [folderPath, setFolderPath] = useState("");
   const [entries, setEntries] = useState([]);
   const [store, setStore] = useState(null);
@@ -31,6 +32,7 @@ function FolderSelector({ gameKey }) {
         if (savedPath) {
           console.log(`✅ Found stored path for ${gameKey}:`, savedPath);
           setFolderPath(savedPath);
+          setHasFolder(true); // ✅ Update game page state
           loadEntries(savedPath);
         } else {
           console.log(`ℹ️ No stored path found for ${gameKey}.`);
@@ -47,6 +49,7 @@ function FolderSelector({ gameKey }) {
     try {
       const items = await readDir(selectedPath, { recursive: false });
       setEntries(items);
+      setHasFolder(items.length > 0); // ✅ Update game page state
     } catch (error) {
       console.error(`🔥 Error reading folder contents for ${gameKey}:`, error);
     }
@@ -58,6 +61,7 @@ function FolderSelector({ gameKey }) {
       if (selected) {
         console.log(`📁 Selected Folder for ${gameKey}:`, selected);
         setFolderPath(selected);
+        setHasFolder(true); // ✅ Update game page state
         loadEntries(selected);
 
         if (store) {
@@ -88,28 +92,36 @@ function FolderSelector({ gameKey }) {
   };
 
   return (
-    <div className="p-4 border rounded-lg">
-      <h2 className="text-xl font-bold">{gameKey.toUpperCase()} Folder</h2>
-      <button onClick={selectFolder} className="bg-blue-500 text-white px-4 py-2 rounded">
+    <div className={`folder-container ${darkMode ? "dark-mode" : "light-mode"}`}>
+      <h2 className="folder-title">{gameKey.toUpperCase()} Folder</h2>
+      
+      <button 
+        onClick={selectFolder} 
+        className="folder-button"
+      >
         Select Folder
       </button>
-      {folderPath && <p className="mt-2">Selected Path: {folderPath}</p>}
 
-      <ul className="mt-2">
+      {folderPath && <p className="folder-path">Selected Path: {folderPath}</p>}
+
+      <ul className="folder-list">
         {entries.length > 0 ? (
           entries.map((entry, index) => (
-            <li key={entry.path || `entry-${index}`} className="flex justify-between border-b py-1">
+            <li 
+              key={entry.path || `entry-${index}`} 
+              className="folder-item"
+            >
               <span>{entry.name}</span>
               <button
                 onClick={() => deleteEntry(entry)}
-                className="bg-red-500 text-white px-2 py-1 rounded"
+                className="folder-delete"
               >
                 Delete
               </button>
             </li>
           ))
         ) : (
-          <p className="text-gray-500 mt-2">No files or folders found.</p>
+          <p className="folder-empty">No files or folders found.</p>
         )}
       </ul>
     </div>

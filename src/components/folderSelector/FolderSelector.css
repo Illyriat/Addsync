@@ -1,0 +1,163 @@
+/* Folder Container */
+.folder-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 20px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+.dark-mode .folder-container {
+    background-color: #1c1c1e;
+    color: #f5f5f5;
+    box-shadow: 0px 8px 16px rgba(255, 255, 255, 0.05);
+}
+
+/* Folder Title */
+.folder-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.dark-mode .folder-title {
+    color: #e5e7eb;
+}
+
+/* Select Folder Button */
+.folder-button {
+    display: block;
+    width: 100%;
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.folder-button:hover {
+    background: #0056b3;
+    transform: scale(1.02);
+}
+
+.dark-mode .folder-button {
+    background: #2563eb;
+}
+
+.dark-mode .folder-button:hover {
+    background: #1e40af;
+}
+
+/* Folder Path Text */
+.folder-path {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+    text-align: center;
+    padding: 8px;
+    background: #f7f7f7;
+    border-radius: 8px;
+    word-break: break-all;
+}
+
+.dark-mode .folder-path {
+    background: #2c2c2e;
+    color: #ddd;
+}
+
+/* Folder List */
+.folder-list {
+    margin-top: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+/* Individual Folder Items */
+.folder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.2s;
+    border: 1px solid #ddd;
+}
+
+.folder-item:hover {
+    background: #e8e8e8;
+    transform: scale(1.01);
+}
+
+.dark-mode .folder-item {
+    background: #2a2a2c;
+    border: 1px solid #3a3a3c;
+}
+
+.dark-mode .folder-item:hover {
+    background: #3a3a3c;
+}
+
+/* File Name */
+.folder-item span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+}
+
+.dark-mode .folder-item span {
+    color: #f5f5f5;
+}
+
+/* Delete Button */
+.folder-delete {
+    background: #dc3545;
+    color: white;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.folder-delete:hover {
+    background: #c82333;
+    transform: scale(1.05);
+}
+
+.dark-mode .folder-delete {
+    background: #e11d48;
+}
+
+.dark-mode .folder-delete:hover {
+    background: #be123c;
+}
+
+/* Empty Message */
+.folder-empty {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    padding: 10px;
+    background: #f3f3f3;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.dark-mode .folder-empty {
+    background: #2c2c2e;
+    color: #bbb;
+}

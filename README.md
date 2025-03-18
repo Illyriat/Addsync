@@ -5,6 +5,9 @@ Desktop App for MMO Addon Management.
 ![Skills](https://skills-icons.vercel.app/api/icons?i=vite,js,react,tauri,rust,html,css)
 
 
+### Current Supported Languages
+    - :gb: :de: :fr: :ru: :es: :it:
+
 
 ## Setup Prerequisites
 

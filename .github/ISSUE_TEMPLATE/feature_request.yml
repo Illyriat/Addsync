@@ -1,0 +1,24 @@
+name: "🌟 Feature Request"
+description: Suggest a new idea or improvement
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: textarea
+    attributes:
+      label: Is your feature request related to a problem?
+      description: Please describe the problem you’re trying to solve.
+
+  - type: textarea
+    attributes:
+      label: Describe the solution you’d like
+      description: What do you want to happen?
+
+  - type: textarea
+    attributes:
+      label: Describe alternatives you’ve considered
+      description: Have you considered any other approaches?
+
+  - type: textarea
+    attributes:
+      label: Additional context
+      description: Add any other context, screenshots, or mockups here.

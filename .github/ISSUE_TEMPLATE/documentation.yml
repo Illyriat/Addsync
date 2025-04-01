@@ -1,0 +1,19 @@
+name: "📝 Documentation Request"
+description: Suggest improvements or updates to the documentation
+title: "[Docs]: "
+labels: [documentation]
+body:
+  - type: textarea
+    attributes:
+      label: What part of the documentation needs improvement?
+      description: Provide a link or section reference.
+
+  - type: textarea
+    attributes:
+      label: What needs to be changed?
+      description: Explain what’s unclear, missing, or incorrect.
+
+  - type: textarea
+    attributes:
+      label: Suggested changes
+      description: If possible, suggest how to fix the issue.

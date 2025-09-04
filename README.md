@@ -1,6 +1,8 @@
 # Addsync
 
-Desktop App for MMO Addon Management.
+![Version](https://img.shields.io/badge/version-v2.0.4-blue)  ![License: All Rights Reserved](https://img.shields.io/badge/license-All--Rights--Reserved-red)  ![Usage: No Redistribution](https://img.shields.io/badge/Usage-No%20Redistribution-red)
+
+#### Desktop App for MMO Addon Management.
 
 ![Skills](https://skills-icons.vercel.app/api/icons?i=vite,js,react,tauri,rust,html,css)
 

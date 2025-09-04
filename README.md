@@ -1,6 +1,6 @@
 # Addsync
 
-![Version](https://img.shields.io/badge/version-v2.0.4-blue)  ![License: All Rights Reserved](https://img.shields.io/badge/license-All--Rights--Reserved-red)  ![Usage: No Redistribution](https://img.shields.io/badge/Usage-No%20Redistribution-red)
+![Version](https://img.shields.io/badge/version-Beta-blue)  ![License: All Rights Reserved](https://img.shields.io/badge/license-All--Rights--Reserved-red)  ![Usage: No Redistribution](https://img.shields.io/badge/Usage-No%20Redistribution-red)
 
 #### Desktop App for MMO Addon Management.
 
